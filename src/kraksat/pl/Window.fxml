@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="kraksat.pl.Controller">
+    <bottom>
+        <GridPane alignment="center" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25"/>
+            </padding>
+            <Label prefHeight="17.0" prefWidth="124.0" text="Center position" GridPane.columnIndex="0"
+                                                                          GridPane.rowIndex="0"/>
+            <Label fx:id="centerPositionText" prefHeight="17.0" prefWidth="124.0"
+                   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label prefHeight="17.0" prefWidth="124.0" text="Object position" GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"/>
+            <Label fx:id="objectPositionText" prefHeight="17.0" prefWidth="124.0"
+                   GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+
+            <Label prefHeight="17.0" prefWidth="124.0" text="Object degree position" GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"/>
+            <Label fx:id="objectDegreePositionText" prefHeight="17.0" prefWidth="124.0"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label prefHeight="17.0" prefWidth="124.0" text="Object rotation speed" GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+            <Label fx:id="objectRotationSpeedText" prefHeight="17.0" prefWidth="124.0"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Button fx:id="startButton" alignment="BOTTOM_CENTER" onAction="#startCamera" prefHeight="46.0"
+                    prefWidth="125.0" text="Start camera" GridPane.columnIndex="2" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="startBinarizationButton" alignment="BOTTOM_CENTER" onAction="#startBinarization"
+                    prefHeight="46.0" prefWidth="125.0" text="Start binarization" GridPane.columnIndex="2"
+                    GridPane.rowIndex="2" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="setCenterButton" alignment="BOTTOM_CENTER" onAction="#centerSet" prefHeight="46.0"
+                    prefWidth="125.0" text="Mark as center" GridPane.columnIndex="3" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="startTrackingButton" alignment="BOTTOM_CENTER" onAction="#objectTrack" prefHeight="46.0"
+                    prefWidth="125.0" text="Start tracking an object" GridPane.columnIndex="3" GridPane.rowIndex="2"
+                    HBox.hgrow="ALWAYS"/>
+
+            <ChoiceBox fx:id="metodChoiceBox" layoutX="16.0" layoutY="52.0" prefWidth="150.0" value="BGR"
+                       GridPane.columnIndex="4">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="BGR"/>
+                        <String fx:value="RGB"/>
+                        <String fx:value="YCrCb"/>
+                        <String fx:value="HSV"/>
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <Slider fx:id="sliderVal1Max" max="255.0" value="255.0" GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+            <Slider fx:id="sliderVal1Min" max="255.0" GridPane.columnIndex="5"/>
+            <Slider fx:id="sliderVal2Max" max="255.0" value="255.0" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+            <Slider fx:id="sliderVal2Min" max="255.0" GridPane.columnIndex="6"/>
+            <Slider fx:id="sliderVal3Max" max="255.0" value="255.0" GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+            <Slider fx:id="sliderVal3Min" max="255.0" GridPane.columnIndex="7"/>
+
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+                <ColumnConstraints maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+                <ColumnConstraints maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+                <ColumnConstraints maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+                <ColumnConstraints maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+                <ColumnConstraints maxWidth="125.0" minWidth="125.0" prefWidth="125.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="31.0" minHeight="15.0" prefHeight="15.0"/>
+                <RowConstraints maxHeight="31.0" minHeight="15.0" prefHeight="15.0"/>
+                <RowConstraints maxHeight="31.0" minHeight="15.0" prefHeight="15.0"/>
+                <RowConstraints maxHeight="24.0" minHeight="8.0" prefHeight="24.0"/>
+                <RowConstraints/>
+            </rowConstraints>
+
+        </GridPane>
+    </bottom>
+    <center>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0"/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="0.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <ImageView fx:id="currentFrame" fitHeight="484.0" fitWidth="644.0" GridPane.columnIndex="0"
+                       GridPane.rowIndex="0"/>
+            <ImageView fx:id="modifyCurrentFrame" fitHeight="484.0" fitWidth="644.0" GridPane.columnIndex="1"
+                       GridPane.rowIndex="0"/>
+        </GridPane>
+    </center>
+</BorderPane>
